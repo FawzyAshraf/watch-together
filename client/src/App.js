@@ -4,6 +4,7 @@ import HistoryLog from './HistoryLog';
 import Members from './Members';
 import Register from './Register';
 import Video from './Video';
+import './App.css';
 
 const socket = io.connect('http://localhost:8000');
 function App() {
@@ -18,7 +19,6 @@ function App() {
 
 	useEffect(() => {
 		socket.on('updateRoomInfo', data => {
-			console.log(data.roomInfo.history);
 			setRoomInfo(data.roomInfo);
 			setRegistered(true);
 		});
@@ -32,18 +32,20 @@ function App() {
 		<>
 			{registered ?
 				<>
-					<Members members={roomInfo.members} />
-					<Video
-						socket={socket}
-						leader={roomInfo.leader}
-						roomName={roomInfo.name}
-						history={roomInfo.history}
-						historyIndex={historyIndex}
-						handleHistoryIndex={handleHistoryIndex} />
-					<HistoryLog
-						history={roomInfo.history}
-						handleHistoryIndex={handleHistoryIndex}
-					/>
+					<article className='chat-content'>
+						<Members members={roomInfo.members} />
+						<Video
+							socket={socket}
+							leader={roomInfo.leader}
+							roomName={roomInfo.name}
+							history={roomInfo.history}
+							historyIndex={historyIndex}
+							handleHistoryIndex={handleHistoryIndex} />
+						<HistoryLog
+							history={roomInfo.history}
+							handleHistoryIndex={handleHistoryIndex}
+						/>
+					</article>
 				</>
 				:
 				<Register socket={socket} />

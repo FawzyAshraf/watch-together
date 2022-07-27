@@ -10,8 +10,14 @@ function Register({ socket }) {
     }
 
     return (
-        <>
-            <form onSubmit={submitData}>
+        <div>
+            <form onSubmit={submitData} className="login-form">
+
+                <div className="welcoming-message">
+                    <h3>Join A Room</h3>
+                    <p>If the room doesn't exist it will be created for you</p>
+                </div>
+
                 <input type="text"
                     placeholder='Name'
                     name='username'
@@ -23,9 +29,9 @@ function Register({ socket }) {
                     id='roomName'
                     placeholder='Room'
                 />
-                <button type='submit'>Submit</button>
+                <button type='submit' className='btn'>Submit</button>
             </form>
-        </>
+        </div>
     )
 }
 

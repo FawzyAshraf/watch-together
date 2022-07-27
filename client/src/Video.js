@@ -56,18 +56,17 @@ function Video({ socket, leader, roomName, history, historyIndex, handleHistoryI
 
     return (
         <>
-            <video
-                controls={socket.id === leader}
-                src="https://storkyappstatic.s3.eu-west-1.amazonaws.com/uploads/sessionDox/file_example_MP4_640_3MG.mp4"
-                width="800px"
-                height="600px"
-                onPlay={playFun}
-                onSeeked={seekedFun}
-                onPause={pauseFun}
-                ref={videoElement}
-            >
-
-            </video>
+            <div>
+                <video
+                    controls={socket.id === leader}
+                    src="https://storkyappstatic.s3.eu-west-1.amazonaws.com/uploads/sessionDox/file_example_MP4_640_3MG.mp4"
+                    onPlay={playFun}
+                    onSeeked={seekedFun}
+                    onPause={pauseFun}
+                    ref={videoElement}
+                >
+                </video>
+            </div>
         </>
     )
 }
